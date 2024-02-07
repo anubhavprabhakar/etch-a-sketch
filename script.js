@@ -22,7 +22,7 @@ for(let i = 1; i<=NUMBER_OF_SQUARES; i++){
     }
 }
 
-// container.addEventListener('mouseover', (event)=>{
-//     const square = event.target
-//     console.log(square)
-// })
+container.addEventListener('mouseover', (event)=>{
+    const square = event.target
+    console.log(square)
+})
