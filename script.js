@@ -6,21 +6,42 @@ const SQUARE_COLOR = 'white'
 const setsquares_button = document.querySelector('#setsquares')
 setsquares_button.addEventListener('click', setSquares)
 
+const info = document.querySelector('.info')
+
+function setInfo(squares){
+    info.textContent = 'Current number of squares per side: '+squares
+}
+
+function removeSketchboard(){
+    const container = document.querySelector('.container')
+    container.remove()
+}
+
+function createWhiteboard(){
+    const body = document.querySelector('body')
+    const container = document.createElement('div')
+    container.setAttribute('class', 'container')
+    container.setAttribute('style', 'height: '+BOARD_SIZE+'cm; width: '+BOARD_SIZE+'cm; display: flex; border: 3px solid black;')
+    body.appendChild(container)
+    return container
+}
+
 function setSquares(){
     let number_of_squares = prompt('Enter the number of squares per side:')
     if(number_of_squares>=10 && number_of_squares<=100){
         NUMBER_OF_SQUARES = number_of_squares
         SQUARE_SIZE = BOARD_SIZE/NUMBER_OF_SQUARES
+        setInfo(NUMBER_OF_SQUARES)
         generateSketchboard()
     }else{
         alert('Setting number of squares per side  to >100 or <10. Valid only from 10 to 100. Please set again.')
     }
 }
 
-const container = document.querySelector('.container')
-container.setAttribute('style', 'height: '+BOARD_SIZE+'cm; width: '+BOARD_SIZE+'cm; display: flex; border: 3px solid black;')
-
 function generateSketchboard(){
+    removeSketchboard()
+    const container = createWhiteboard()
+
     for(let i = 1; i<=NUMBER_OF_SQUARES; i++){
         const line = document.createElement('div')
         line.classList.add('line')
@@ -40,4 +61,3 @@ function generateSketchboard(){
         // console.log(square)
     })
 }
-
