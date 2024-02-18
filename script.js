@@ -8,6 +8,9 @@ setsquares_button.addEventListener('click', setSquares)
 
 const info = document.querySelector('.info')
 
+const clearBoard_button = document.querySelector('#clearBoard')
+clearBoard_button.disabled=true
+
 function setInfo(squares){
     info.textContent = 'Current number of squares per side: '+squares
 }
@@ -36,6 +39,8 @@ function setSquares(){
     }else{
         alert('Setting number of squares per side  to >100 or <10. Valid only from 10 to 100. Please set again.')
     }
+    clearBoard_button.disabled=false
+    clearBoard_button.addEventListener('click', generateSketchboard)
 }
 
 function generateSketchboard(){
