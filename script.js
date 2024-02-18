@@ -29,6 +29,11 @@ function createWhiteboard(){
     return container
 }
 
+function clearboard(){
+    clearBoard_button.disabled=false
+    clearBoard_button.addEventListener('click', generateSketchboard)
+}
+
 function setSquares(){
     let number_of_squares = prompt('Enter the number of squares per side:')
     if(number_of_squares>=10 && number_of_squares<=100){
@@ -36,11 +41,10 @@ function setSquares(){
         SQUARE_SIZE = BOARD_SIZE/NUMBER_OF_SQUARES
         setInfo(NUMBER_OF_SQUARES)
         generateSketchboard()
+        clearboard()
     }else{
         alert('Setting number of squares per side  to >100 or <10. Valid only from 10 to 100. Please set again.')
     }
-    clearBoard_button.disabled=false
-    clearBoard_button.addEventListener('click', generateSketchboard)
 }
 
 function generateSketchboard(){
