@@ -47,10 +47,7 @@ function setSquares(){
     }
 }
 
-function generateSketchboard(){
-    removeSketchboard()
-    const container = createWhiteboard()
-
+function generateDivs(container){
     for(let i = 1; i<=NUMBER_OF_SQUARES; i++){
         const line = document.createElement('div')
         line.classList.add('line')
@@ -64,6 +61,14 @@ function generateSketchboard(){
             line.appendChild(div)
         }
     }
+}
+
+function generateSketchboard(){
+    removeSketchboard()
+    const container = createWhiteboard()
+
+    generateDivs(container)
+
     container.addEventListener('mousemove', (event)=>{
         const square = event.target
         square.style.backgroundColor = 'red'
